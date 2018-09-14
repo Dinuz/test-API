@@ -22,15 +22,7 @@ class UserRegister(Resource):
         if UserModel.find_by_username(request_data['username']):
             return {"message": "Username already in use."}, 400
 
-        user = UserModel(**request_data)  # UserModel(request_data['username'], request_data['password'])
+        user = UserModel(**request_data)
         user.save_to_db()
-        # connection = sqlite3.connect('data.db')
-        # cursor = connection.cursor()
-
-        # query = "INSERT INTO users VALUES (NULL, ?, ?)"
-        # cursor.execute(query, (request_data['username'], request_data['password']))
-
-        # connection.commit()
-        # connection.close()
 
         return {"message": "User created successfully."}, 201

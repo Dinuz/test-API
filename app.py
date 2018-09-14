@@ -14,11 +14,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'masano'
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-jwt = JWT(app, authenticate, identity)  # /auth
+jwt = JWT(app, authenticate, identity)
 
 api.add_resource(Store, '/store/<string:name>')
 api.add_resource(StoreList, '/stores')
