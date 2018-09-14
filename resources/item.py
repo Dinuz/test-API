@@ -22,7 +22,7 @@ class Item(Resource):
         try:
             item = ItemModel.find_by_name(name)
         except:
-            return {'message': "An error occurred inserting the item."}, 500
+            return {'message': "An error occurred retrieving the item."}, 500
 
         if item:
             return item.json()
